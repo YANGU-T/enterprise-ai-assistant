@@ -1,0 +1,67 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 构建产物
+dist/
+build/
+client/dist/
+
+# 数据库文件
+*.sqlite
+*.sqlite3
+*.db
+
+# 日志
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 运行时
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# 覆盖率报告
+coverage/
+.nyc_output/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 临时文件
+tmp/
+temp/
+.cache/
+
+# Docker
+docker-compose.override.yml
+
+# 构建工具
+.vite/
+.eslintcache
+
+# 测试
+test-results/
+playwright-report/
+
+# 敏感信息
+*.pem
+*.key
+*.crt

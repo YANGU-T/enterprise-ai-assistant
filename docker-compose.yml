@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # 前端服务
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - server
+    networks:
+      - ai-assistant-network
+
+  # 后端服务
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+      - ./server/database.sqlite:/app/database.sqlite
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - JWT_SECRET=enterprise-ai-assistant-secret-key-2026
+      - DB_DIALECT=sqlite
+      - DB_STORAGE=./database.sqlite
+    networks:
+      - ai-assistant-network
+
+networks:
+  ai-assistant-network:
+    driver: bridge
